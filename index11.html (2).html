@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sevgililer Günü Sürprizi 💖</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(to bottom, #ffe6f0, #fff0f5);
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      color: #d32f2f;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 10px;
+      z-index: 1000;
+      text-align: center;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #d32f2f;
+      font-weight: bold;
+      font-size: 1.2em;
+      transition: transform 0.2s;
+    }
+
+    nav a:hover { transform: scale(1.2); }
+
+    section {
+      min-height: 100vh;
+      padding-top: 80px;
+      text-align: center;
+      position: relative;
+    }
+
+    h1 { font-size: 3em; margin-top: 50px; animation: fadeIn 2s ease-in-out forwards; }
+    p { font-size: 1.5em; margin: 20px; animation: fadeIn 3s ease-in-out forwards; }
+
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background: red;
+      transform: rotate(-45deg);
+      animation: floatHeart linear infinite;
+    }
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background: red;
+      border-radius: 50%;
+    }
+    .heart::before { top: -15px; left: 0; }
+    .heart::after { left: 15px; top: 0; }
+
+    @keyframes floatHeart {
+      0% { transform: translateY(0) rotate(-45deg); opacity: 1;}
+      100% { transform: translateY(-1000px) rotate(-45deg); opacity: 0;}
+    }
+
+    /* Button styles */
+    .btn { margin: 30px 10px 0 10px; padding: 15px 30px; font-size: 1.5em; border: none; border-radius: 10px; cursor: pointer; color: white; transition: transform 0.2s; }
+    .yes-btn { background: #ff4081; }
+    .yes-btn:hover { transform: scale(1.2) rotate(-10deg); }
+    .no-btn { background: #8e24aa; position: relative; }
+
+    /* Sketch images */
+    .sketch { width: 200px; margin: 20px auto; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: transform 0.5s; }
+    .sketch:hover { transform: scale(1.1) rotate(5deg); }
+
+    @keyframes fadeIn { 0% { opacity: 0; transform: translateY(-50px);} 100% { opacity: 1; transform: translateY(0);} }
+
+    /* Love letter container */
+    #loveLetter { margin-top:30px; font-size:1.2em; line-height:1.6; color:#d32f2f; min-height:200px; position: relative; }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#home">Giriş</a>
+    <a href="#about">Hakkında</a>
+    <a href="#surprise">Sürpriz</a>
+    <a href="#goodbye">Veda</a>
+  </nav>
+
+  <!-- Section 1: Home -->
+  <section id="home">
+    <h1>Sevgilim, Canım ❤️</h1>
+    <p>Seninle her an bir masal gibi... 💕</p>
+  </section>
+
+  <!-- Section 2: About -->
+  <section id="about">
+    <h1>Hakkında 🌹</h1>
+    <p>Hayatımın en tatlı melodisi sensin, gülüşün kalbimi ısıtıyor. 💖</p>
+    <img class="sketch" src="https://i.ibb.co/2sHfGqC/valentine-sketch1.png" alt="Tatlı Sketch">
+    <img class="sketch" src="https://i.ibb.co/5c1q1cX/valentine-sketch2.png" alt="Tatlı Sketch">
+  </section>
+
+  <!-- Section 3: Surprise -->
+  <section id="surprise">
+    <h1>Sürpriz 🎁</h1>
+    <p>Sevgi dolu kararını seç! ❤️</p>
+    <button class="btn yes-btn" onclick="showLoveLetter()">Evet ❤️</button>
+    <button class="btn no-btn" id="noBtn">Hayır ❌</button>
+
+    <!-- Love letter container -->
+    <div id="loveLetter"></div>
+  </section>
+
+  <!-- Section 4: Goodbye -->
+  <section id="goodbye">
+    <h1>Veda 💌</h1>
+    <p>Her anımız benim için çok değerliydi. Seninle olmak harika! 🌹</p>
+  </section>
+
+  <!-- Floating hearts -->
+  <script>
+    // Generate floating hearts for full background
+    for (let i = 0; i < 50; i++) {
+      let heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+      heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+      heart.style.width = heart.style.height = (Math.random() * 20 + 20) + 'px';
+      document.body.appendChild(heart);
+    }
+
+    // YES button: typing love letter
+    function showLoveLetter() {
+      const text = `Sevgilim,\n\nSeninle her an bir rüya gibi... Gülüşün kalbimi ısıtıyor, sesin ruhuma huzur veriyor. Hayatımda senin gibi özel birini bulduğum için kendimi çok şanslı hissediyorum. 💖\n\nSenin yanında olmak, seninle kahkaha atmak, hayallerimizi paylaşmak bana tarifsiz bir mutluluk veriyor. Her gün seninle daha da güzelleşiyor, her anımız bir masal gibi oluyor.\n\nSeni sadece bugün değil, her zaman seveceğim. Sen benim hayatımın en değerli parçasısın. 🌹\n\nHadi el ele, birlikte her anımızı unutulmaz yapalım... 💕`;
+      const loveLetter = document.getElementById('loveLetter');
+      loveLetter.innerHTML = '';
+      let i = 0;
+      function typeLetter() {
+        if (i < text.length) {
+          if (Math.random() < 0.05 && text[i] !== ' ' && text[i] !== '\n') {
+            loveLetter.innerHTML += '❤️';
+          }
+          loveLetter.innerHTML += text[i] === '\n' ? '<br><br>' : text[i];
+          i++;
+          setTimeout(typeLetter, 40 + Math.random() * 50);
+        }
+      }
+      typeLetter();
+    }
+
+    // NO button jumps
+    const noBtn = document.getElementById('noBtn');
+    noBtn.addEventListener('mouseenter', () => {
+      const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+      const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+      noBtn.style.position = 'absolute';
+      noBtn.style.left = x + 'px';
+      noBtn.style.top = y + 'px';
+    });
+  </script>
+
+</body>
+</html>
